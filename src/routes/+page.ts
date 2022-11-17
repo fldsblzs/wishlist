@@ -5,10 +5,10 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = async (event) => {
 	const { session } = await getSupabase(event);
 
-	if (!session) {
-		throw redirect(303, '/');
+	if (session) {
+		const data = await event.parent();
+		throw redirect(303, `/wisher/${data.wishers[0].id}`);
 	}
-	
-	const data = await event.parent();
-	throw redirect(303, `/wisher/${data.wishers[0].id}`);
+
+	return {};
 };
