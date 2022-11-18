@@ -3,6 +3,9 @@
 	import { supabaseClient } from '$lib/db';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { createStore } from '$lib/store';
+
+	createStore();
 
 	onMount(() => {
 		const {

@@ -9,5 +9,6 @@ export interface Wish {
 export interface Wisher {
 	id: number;
 	name: string;
+	email: string;
 	wishes: Wish[];
 }

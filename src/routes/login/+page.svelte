@@ -1,16 +1,21 @@
 <script lang="ts">
 	import { supabaseClient } from '$lib/db';
+	import { getStore } from '$lib/store';
 
 	let loading: boolean = false;
 
+	const store = getStore();
+
 	const signIn = async () => {
 		loading = true;
-		const x = await supabaseClient.auth.signInWithOAuth({
+		await supabaseClient.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
-				scopes: 'profile'
+				scopes: 'profile',
+				redirectTo: 'http://localhost:3000/wisher'
 			}
-		});		
+		});
+		$store = true;
 	};
 </script>
 
