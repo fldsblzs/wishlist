@@ -5,7 +5,7 @@
 </script>
 
 <div class="overflow-x-auto w-full mb-10">
-	<table class="table w-full">
+	<table class="table table-fixed w-full">
 		<WishlistHeader />
 		<tbody>
 			{#each $page.data.wishes as wish (wish.id)}

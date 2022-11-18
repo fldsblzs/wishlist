@@ -16,12 +16,11 @@
 	const handleCheck = async () => {
 		const reserver: string = checked ? '' : $page.data.session.user.user_metadata.full_name;
 		await updateWish(wish.id, reserver, supabaseClient);
-		// checked = !checked;
 	};
 </script>
 
 <tr>
-	<th>
+	<td>
 		<label>
 			{#if showCheckbox}
 				<input
@@ -34,12 +33,14 @@
 				🎁
 			{/if}
 		</label>
-	</th>
-	<td>
-		<a class="link" target="blank" href={wish.url}>{capitalizeFirstLetter(wish.title)}</a>
+	</td>
+	<td class="w-24">
+		<div class="break-all">
+			<a class="link" target="blank" href={wish.url}>{capitalizeFirstLetter(wish.title)}</a>
+		</div>
 	</td>
 	<td>{wish.price}</td>
-	<td>
+	<td class="max-w-xs">
 		{#if wish.reserver}
 			{wish.reserver}
 		{/if}
