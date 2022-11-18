@@ -1,21 +1,22 @@
 <script lang="ts">
 	import { supabaseClient } from '$lib/db';
-	import { getStore } from '$lib/store';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
 	let loading: boolean = false;
 
-	const store = getStore();
-
-	const signIn = async () => {
+	const signIn = () => {
 		loading = true;
-		await supabaseClient.auth.signInWithOAuth({
+		supabaseClient.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
-				scopes: 'profile',
-				redirectTo: 'http://localhost:3000/wisher'
+				scopes: 'profile'
 			}
 		});
-		$store = true;
+	};
+
+	const toFirstList = async () => {
+		await goto(`/wisher/${$page.data.wishers[0].id}`);
 	};
 </script>
 
@@ -28,7 +29,9 @@
 				with <a href="https://kit.svelte.dev/" target="blank" class="link link-primary">SvelteKit</a
 				>.
 			</p>
-			{#if loading}
+			{#if $page.data.session}
+				<button on:click={toFirstList} class="btn btn-primary w-52">To the lists!</button>
+			{:else if loading}
 				<button class="btn btn-primary loading w-52">Loading</button>
 			{:else}
 				<button on:click={signIn} class="btn btn-primary w-52">Sign in with Google</button>

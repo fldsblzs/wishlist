@@ -1,16 +1,17 @@
 import type { LayoutLoad } from './$types';
 import { getSupabase } from '@supabase/auth-helpers-sveltekit';
 import { getWishers } from '$lib/repositories/wishersRepository';
+import type { Wisher } from '$lib/types';
 
 export const load: LayoutLoad = async (event) => {
 	const { session, supabaseClient } = await getSupabase(event);
 
-	let wishers = await getWishers(supabaseClient);
+	let wishers: Wisher[] = [];
 
-	// TODO: enable this
-	// if (session?.user.email) {
-	// 	wishers = wishers.filter((wisher) => wisher.email !== session?.user.email);
-	// }
+	if (session?.user.email) {
+		const allWishers = await getWishers(supabaseClient);
+		wishers = allWishers.filter((wisher) => wisher.email !== session?.user.email);
+	}
 
 	return { session, wishers };
 };

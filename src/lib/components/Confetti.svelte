@@ -3,7 +3,7 @@
 
 	export let count: number;
 
-	const characters = ['🎄', '🎅', '☃️'];
+	const characters = ['🎄', '🎅', '☃️', '❄️', '🎁'];
 
 	let confettis = new Array(count)
 		.fill('')
@@ -44,10 +44,6 @@
 {/each}
 
 <style>
-	/* :global(body) {
-		overflow: hidden;
-	} */
-
 	span {
 		position: absolute;
 		font-size: 5vw;

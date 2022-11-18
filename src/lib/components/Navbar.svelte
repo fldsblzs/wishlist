@@ -30,7 +30,9 @@
 				{/each}
 			</ul>
 		</div>
-		<div class="p-2 normal-case text-xl"><span class="text-primary">wish</span>list</div>
+		<a href="/" class="btn btn-ghost normal-case text-xl"
+			><span class="text-primary">wish</span>list</a
+		>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal p-0">
