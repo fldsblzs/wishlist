@@ -12,3 +12,14 @@ export const getWishes = async (id: string, supabaseClient: SupabaseClient): Pro
 
 	return data as Wish[];
 };
+
+export const updateWish = async (
+	id: number,
+	reserver: string | null,
+	supabaseClient: SupabaseClient
+) => {
+	const { data, error } = await supabaseClient
+		.from(table)
+		.update({ reserver: reserver })
+		.eq('id', id);
+};

@@ -7,7 +7,7 @@ export const load: PageLoad = async (event) => {
 	const { session, supabaseClient } = await getSupabase(event);
 
 	if (!session) {
-		throw redirect(303, '/');
+		throw redirect(303, '/login');
 	}
 
     const wishes = await getWishes(event.params.id, supabaseClient);    
