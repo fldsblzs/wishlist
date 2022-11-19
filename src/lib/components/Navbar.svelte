@@ -26,7 +26,12 @@
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 			>
 				{#each $page.data.wishers as wisher}
-					<li><a href={`/wisher/${wisher.id}`}>{wisher.name}</a></li>
+					<li>
+						<a
+							href={`/wisher/${wisher.id}`}
+							class:text-primary={$page.url.pathname.includes(wisher.id)}>{wisher.name}</a
+						>
+					</li>
 				{/each}
 			</ul>
 		</div>
