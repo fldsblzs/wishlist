@@ -1,5 +1,9 @@
 <script lang="ts">
-	import Wishlist from '$lib/components/Wishlist.svelte';
+	import { page } from '$app/stores';
+	import { Wishes } from '$lib/components';
+	import { wishes } from '$lib/store';
+
+	$: $wishes = $page.data.wishes;
 </script>
 
-<Wishlist />
+<Wishes />

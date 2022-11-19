@@ -4,8 +4,11 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 const table: string = 'wish';
 
 export const getWishes = async (id: string, supabaseClient: SupabaseClient): Promise<Wish[]> => {
-	const { data, error } = await supabaseClient.from(table).select().eq('wisher_id', id);
-
+	const { data, error } = await supabaseClient
+		.from(table)
+		.select()
+		.eq('wisher_id', id)
+		.order('title', { ascending: true });
 	if (error) {
 		throw Error('Cannot query wishes from Supabase!');
 	}
