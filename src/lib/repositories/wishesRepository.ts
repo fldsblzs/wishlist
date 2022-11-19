@@ -27,7 +27,7 @@ export const reserveWish = async (
 
 	const wish = data[0] as WishBase;
 
-	if (wish.reserver === '') {
+	if (!wish.reserver || wish.reserver === '') {
 		await supabaseClient.from(table).update({ reserver: reserver }).eq('id', id);
 
 		return true;

@@ -14,5 +14,5 @@ export interface Wisher {
 
 export interface WishBase {
 	id: number;
-	reserver: string;
+	reserver: string | null;
 }
