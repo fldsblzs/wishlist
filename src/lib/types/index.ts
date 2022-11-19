@@ -1,10 +1,8 @@
-export interface Wish {
-	id: number;
+export interface Wish extends WishBase {
 	category: string;
 	title: string;
 	url: string;
 	price: string;
-	reserver: string;
 }
 
 export interface Wisher {
@@ -12,4 +10,9 @@ export interface Wisher {
 	name: string;
 	email: string;
 	wishes: Wish[];
+}
+
+export interface WishBase {
+	id: number;
+	reserver: string;
 }

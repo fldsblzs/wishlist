@@ -2,10 +2,15 @@
 	import { page } from '$app/stores';
 	import { Wishes } from '$lib/components';
 	import { wishes } from '$lib/store';
+	import type { Wisher } from '$lib/types';
+
+	let wisher: Wisher;
 
 	$: $wishes = $page.data.wishes;
+	$: wisher = $page.data.wishers.find((x) => x.id == $page.params.id);
 </script>
 
+<h1 class="font-semibold text-3xl">{wisher.name}</h1>
 {#if $wishes.length > 0}
 	<Wishes />
 {:else}
