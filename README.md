@@ -6,7 +6,7 @@ wishlist is a small christmas application for making privately hosted wish lists
 
 - Can be set up and hosted in minutes for free using Supabase and Vercel
 - Presents can be added directly using Supabase
-- Invited users can manage their choices - reserve presents or change your mind
+- Invited users can manage their choices: reserve presents for now or change their mind later
 
 ## Stack
 
